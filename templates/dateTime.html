@@ -1,0 +1,21 @@
+<div class="form-group">
+    <label for="{{name}}">{{label}}</label>
+    <div ng-if="!showDatePicker">
+        <input type="text" class="form-control" id="{{id}}" name="{{name}}" ng-placeholder="{{placeholder}}"
+               ng-model="ngModel" ui-mask="{{mask}}"/>
+    </div>
+    <div ng-if="showDatePicker">
+            <div class="input-group">
+            <input type="text" class="form-control date-picker" datepicker-popup="{{vm.format}}" ng-model="vm.dateValue"
+                   is-open="vm.opened" datepicker-options="vm.dateOptions" close-text="Close" />
+            <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="vm.open($event)"><i
+                    class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+            <timepicker ng-model="vm.timeValue" ng-change="vm.timeChanged()" show-meridian="false" style=" margin-left: 10px;"></timepicker>
+
+            </div>
+        <input type="hidden" ng-model="$parent.ngModel" />
+    </div>
+
+</div>
