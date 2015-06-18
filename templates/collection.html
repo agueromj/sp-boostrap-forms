@@ -1,6 +1,6 @@
 <div class="form-group">
     <label for="{{name}}">{{label}}</label>
     <select class="form-control" ng-options="item.name for item in collection track by item.id" name="{{name}}" id="{{id}}" ng-model="ngModel">
-        <option value="" ng-if="hasBlank">{{blankTitle}}</option>
+        <option value="">---{{blankTitle}}--</option>
     </select>
 </div>

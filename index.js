@@ -1,5 +1,5 @@
 (function(){
-    var basePath = 'src/shared/sp-boostrap-forms/';
+    var basePath = 'sp-boostrap-forms/';
     var app = angular.module('sp.bootstrapForms', ['ui.bootstrap']);
     app.config(['$compileProvider', function ($compileProvider) {
         $compileProvider.debugInfoEnabled(false);

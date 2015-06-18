@@ -5,7 +5,7 @@ module.exports = function (config) {
     config.set({
 
         // base path that will be used to resolve all patterns (eg. files, exclude)
-        basePath: '../../../../../javascripts/',
+        basePath: '',
 
 
         // frameworks to use
@@ -15,20 +15,18 @@ module.exports = function (config) {
 
         // list of files / patterns to load in the browser
         files: [
-            'libs/jquery/dist/jquery.min.js',
-            'libs/lodash/lodash.min.js',
-            'libs/moment/min/moment.min.js',
-            'libs/angular/angular.min.js',
-            'libs/angular-mocks/angular-mocks.js',
-            'libs/angular-bootstrap/ui-bootstrap.min.js',
-            'libs/angular-bootstrap/ui-bootstrap-tpls.min.js',
-            'libs/jquery/dist/jquery.min.js',
-            'src/shared/sp-boostrap-forms/*.js',
-            'src/shared/sp-boostrap-forms/directives/*.js',
-            'src/shared/sp-boostrap-forms/test/helpers.js',
-            'src/shared/sp-boostrap-forms/test/*Spec.js',
-            'src/shared/sp-boostrap-forms/templates/*.html',
-            'src/shared/sp-boostrap-forms/templates/bootstrap_overrides/*.html'
+            '../../jquery/dist/jquery.min.js',
+            '../../lodash/lodash.min.js',
+            '../../moment/min/moment.min.js',
+            '../../angular/angular.min.js',
+            '../../angular-mocks/angular-mocks.js',
+            '../../angular-bootstrap/ui-bootstrap-tpls.min.js',
+            '../*.js',
+            '../directives/*.js',
+            '../templates/*.html',
+            '../templates/bootstrap_overrides/*.html',
+            './helpers.js',
+            '*Spec.js'
         ],
 
 
@@ -39,9 +37,14 @@ module.exports = function (config) {
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
-            'src/shared/sp-boostrap-forms/templates/*.html':['ng-html2js'],
-            'src/shared/sp-boostrap-forms/templates/bootstrap_overrides/*.html':['ng-html2js']
+            '../templates/*.html':['ng-html2js'],
+            '../templates/bootstrap_overrides/*.html':['ng-html2js']
 
+        },
+
+        ngHtml2JsPreprocessor: {
+            stripPrefix: '.*/sp-boostrap-forms/',
+            prependPrefix: 'sp-boostrap-forms/'
         },
 
 

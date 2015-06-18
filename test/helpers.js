@@ -4,5 +4,5 @@
 var helper = {};
 
 helper.getModuleRootPath = function(){
-   return 'src/shared/sp-boostrap-forms/';
+   return 'sp-boostrap-forms/';
 }

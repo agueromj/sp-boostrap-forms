@@ -15,15 +15,16 @@
                      name: 'option2'
                  }
              ],
-             includeBlank: false,
+             includeBlank: "false",
              label: "test label",
              name: "test_name",
              placeholder: "test placeholder",
-             onChange: null
+             onChange: null,
+             blankTitle: 'Select Option'
          };
 
          function compileTemplate($scope){
-             var el = $compile('<abf-collection label="{{vm.label}}" name="{{vm.name}}" ng-model="vm.model" collection="vm.collection" data-include-blank="{{vm.includeBlank}}" onchange="vm.onChange()"></abf-collection>')($scope);
+             var el = $compile('<abf-collection label="{{vm.label}}" name="{{vm.name}}" ng-model="vm.model" collection="vm.collection" data-include-blank="{{vm.includeBlank}}" data-blank-title="{{vm.blankTitle}}" onchange="vm.onChange()"></abf-collection>')($scope);
              $scope.$digest();
              //console.log(el.html());
              return el;
@@ -55,14 +56,7 @@
          it("should create an option tag for each collection item", function(){
              var element = compileTemplate($rootScope);
 
-             expect(element.find('option').length).toEqual(vm.collection.length);
-         });
-
-         it("should include a blank option if includeBlank is set to true", function(){
-             vm.includeBlank = true;
-             var element = compileTemplate($rootScope);
-
-             expect(element.find('option').length).toEqual(vm.collection.length + 1);
+             expect(element.find('option').length - 1).toEqual(vm.collection.length);
          });
 
          it("should execute the onchange event if passed to the directive", function(){
@@ -76,13 +70,8 @@
                  $rootScope.vm.model = _.findWhere(vm.collection, {id: 2});
              });
 
-             expect(onChangeFunction.callCount).toBe(2);
+             expect(onChangeFunction.calls.count()).toBe(2);
          });
 
-         it("should select the first option if set to no blank", function(){
-             vm.includeBlank = false;
-             var element = compileTemplate($rootScope);
-             expect($rootScope.vm.model).toBe(_.findWhere(vm.collection, {id: 1}));
-         });
      });
 }());
