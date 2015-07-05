@@ -44,7 +44,7 @@
          it("should have a valid label", function(){
              var element = compileTemplate($rootScope);
 
-             expect(element.html()).toContain('<label for="' + vm.name + '">' + vm.label + '</label>');
+             expect($(element).find('label:contains("' + vm.label + '")').length).toEqual(1);
          });
 
          it("should have a select with a valid 'name' attribute", function(){

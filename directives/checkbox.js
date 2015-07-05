@@ -5,6 +5,7 @@
     function abfCheckbox(MODULE_ROOT_PATH){
         return{
             restrict: 'EA',
+            require: ['ngModel', '?^form'],
             scope: {
                 ngModel: '=',
                 label: '@',
@@ -12,8 +13,8 @@
             },
             replace: true, //this will only work if the template returns one element
             templateUrl: MODULE_ROOT_PATH + 'templates/checkbox.html',
-            link: function(scope, el, attr, ctrl){
-               scope.isChecked = true;
+            link: function(scope, el, attr, ctrls){
+               scope.isChecked = scope.ngModel == true;
             }
         }
     }

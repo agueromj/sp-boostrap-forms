@@ -1,12 +1,12 @@
-<div class="form-group">
+<div class="form-group" ng-class="{'has-error': !ctrl.$valid && (formCtrl[name].$touched || formCtrl.$submitted)}">
     <label for="{{name}}">{{label}}</label>
     <div ng-if="!showDatePicker">
         <input type="text" class="form-control" id="{{id}}" name="{{name}}" ng-placeholder="{{placeholder}}"
-               ng-model="ngModel" ui-mask="{{mask}}"/>
+               ng-model="vm.dateValue" ui-mask="{{mask}}" ng-required="{{::vm.required}}"/>
     </div>
     <div ng-if="showDatePicker">
             <div class="input-group">
-            <input type="text" class="form-control date-picker" datepicker-popup="{{vm.format}}" ng-model="vm.dateValue"
+            <input name="dateField" type="text" class="form-control date-picker" datepicker-popup="{{vm.format}}" ng-model="vm.dateValue"
                    is-open="vm.opened" datepicker-options="vm.dateOptions" close-text="Close" />
             <span class="input-group-btn">
             <button type="button" class="btn btn-default" ng-click="vm.open($event)"><i
@@ -16,6 +16,9 @@
 
             </div>
         <input type="hidden" ng-model="$parent.ngModel" />
+    </div>
+    <div ng-messages="ctrl.$error" ng-if="formCtrl[name].$touched || formCtrl.$submitted">
+        <ng-messages-include src="{{errMsgPath}}"></ng-messages-include>
     </div>
 
 </div>

@@ -2,7 +2,7 @@
  * Created by jusefbelkasemi on 09/04/15.
  */
 (function(){
-    describe("Testing string directive", function(){
+    describe("Testing currency directive", function(){
         var $compile,
             $rootScope;
 
@@ -14,7 +14,7 @@
         };
 
         beforeEach(module('sp.bootstrapForms'));
-        beforeEach(module(helper.getModuleRootPath() + 'templates/string.html'));
+        beforeEach(module(helper.getModuleRootPath() + 'templates/currency.html'));
 
         beforeEach(inject(function(_$compile_, _$rootScope_){
             $compile = _$compile_;
@@ -44,11 +44,5 @@
             expect(angular.element(element[0].querySelector('input[ng-placeholder="' + vm.placeholder+ '"]')).length).toEqual(1);
 
         });
-
-
-
-        xit("should run the first test", function(){
-            expect(1).toEqual(1);
-        })
     })
 }());

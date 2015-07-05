@@ -1,6 +1,9 @@
-<div class="form-group">
+<div class="form-group" ng-class="{'has-error': !ctrl.$valid && (formCtrl[name].$touched || formCtrl.$submitted)}">
     <label for="{{name}}">{{label}}</label>
-    <select class="form-control" ng-options="item.name for item in collection track by item.id" name="{{name}}" id="{{id}}" ng-model="ngModel">
-        <option value="">---{{blankTitle}}--</option>
+    <select class="form-control" ng-options="item.id as item[title] for item in collection" name="{{name}}" id="{{id}}" ng-model="ngModel" ng-model-options="{ updateOn: 'submit blur' }">
+        <option value="">---{{blank}}--</option>
     </select>
+    <div ng-messages="ctrl.$error" ng-if="formCtrl[name].$touched || formCtrl.$submitted">
+        <ng-messages-include src="{{errMsgPath}}"></ng-messages-include>
+    </div>
 </div>

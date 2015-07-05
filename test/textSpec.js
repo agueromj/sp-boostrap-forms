@@ -27,8 +27,7 @@
             var element = $compile('<abf-text label="{{vm.label}}" name="{{vm.name}}" ng-model="vm.stringField"></abf-text>')($rootScope);
 
             $rootScope.$digest();
-            expect(element.html()).toContain('<label for="' + vm.name + '">' + vm.label + '</label>');
-
+            expect($(element).find('label:contains("' + vm.label + '")').length).toEqual(1);
         });
 
         it("should have an input with a valid 'name' attribute", function(){

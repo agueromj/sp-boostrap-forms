@@ -1,4 +1,7 @@
-<div class="form-group">
+<div class="form-group" ng-class="{'has-error': !ctrl.$valid && (formCtrl[name].$touched || formCtrl.$submitted)}">
     <label for="{{name}}">{{label}}</label>
     <input type="text" class="form-control" id="{{id}}" name="{{name}}" ng-placeholder="{{placeholder}}" ng-model="ngModel">
+    <div ng-messages="ctrl.$error" ng-if="formCtrl[name].$touched || formCtrl.$submitted">
+        <ng-messages-include src="{{errMsgPath}}"></ng-messages-include>
+    </div>
 </div>

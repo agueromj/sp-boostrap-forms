@@ -21,6 +21,7 @@ module.exports = function (config) {
             '../../angular/angular.min.js',
             '../../angular-mocks/angular-mocks.js',
             '../../angular-bootstrap/ui-bootstrap-tpls.min.js',
+            '../../angular-messages/angular-messages.min.js',
             '../*.js',
             '../directives/*.js',
             '../templates/*.html',

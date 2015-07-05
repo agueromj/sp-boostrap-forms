@@ -26,14 +26,14 @@
         function create(){
             scope = $rootScope.$new();
             scope.vm = vm;
-            var compiledEl = $compile('<abf-checkbox label="{{vm.label}}" name="{{vm.name}}" ng-model="vm.stringField" ng-checked="vm.isChecked"></abf-checkbox>')(scope);
+            var compiledEl = $compile('<abf-checkbox label="{{vm.label}}" name="{{vm.name}}" ng-model="vm.stringField"></abf-checkbox>')(scope);
             scope.$digest();
             return compiledEl;
         }
 
         it("should have a valid label", function(){
             var element = create();
-            expect(element.html()).toContain('<label for="' + vm.name + '">' + vm.label + '</label>');
+            expect($(element).find('label:contains("' + vm.label + '")').length).toEqual(1);
         });
 
         it("should have an input with a valid 'name' attribute", function(){

@@ -5,6 +5,7 @@
     function abfString(MODULE_ROOT_PATH){
         return{
             restrict: 'EA',
+            require: ['ngModel', '?^form'],
             scope: {
                 ngModel: '=',
                 label: '@',
@@ -13,12 +14,18 @@
                 collection: '=',
                 includeBlank: '@',
                 onchange: '&',
-                blankTitle: '@'
+                blankTitle: '@',
+                titleField: '@'
             },
             replace: true, //this will only work if the template returns one element
             templateUrl: MODULE_ROOT_PATH + 'templates/collection.html',
-            link: function(scope, el, attr, ctrl){
-                scope.blankTitle = scope.blankTitle == null ? 'Select Option': scope.blankTitle;
+            link: function(scope, el, attr, ctrls){
+                scope.title = (attr.titleField == null) ? 'title': attr.titleField;
+                var formCtrl = ctrls[1];
+                scope.errMsgPath = MODULE_ROOT_PATH + 'templates/errorMessages.html';
+                scope.ctrl = ctrls[0];
+                scope.formCtrl = formCtrl;
+                scope.blank = scope.blankTitle == null ? 'Select Option': scope.blankTitle;
 
                 scope.$watch('ngModel', function(newVal, oldVal) {
 
