@@ -1,0 +1,17 @@
+<div class="form-group" ng-class="{'has-error': !ctrl.$valid && (formCtrl[name].$touched || formCtrl.$submitted)}">
+    <label for="{{name}}">{{label}}</label>
+    <div>
+        <img ngf-src="ngModel[0]" ngf-default-src="*/thumb.png" ngf-accept="'image/*'">
+        <div class="button btn btn-sm btn-default" ngf-select ng-model="ngModel">Upload</div>
+    </div>
+    <!--<div class="button" ngf-select ngf-change="upload($files)">Upload on file change</div>-->
+    <!--Drop File:-->
+    <!--<div ngf-drop ng-model="files" class="drop-box"-->
+         <!--ngf-drag-over-class="dragover" ngf-multiple="true" ngf-allow-dir="true"-->
+         <!--ngf-accept="'image/*,application/pdf'">Drop Images or PDFs files here</div>-->
+    <!--<div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>-->
+
+    <!--Image thumbnail: <img ngf-src="files[0]" ngf-default-src="'/thumb.jpg'" ngf-accept="'image/*'">-->
+    <!--Audio preview: <audio controls ngf-src="files[0]" ngf-accept="'audio/*'"></audio>-->
+    <!--Video preview: <video controls ngf-src="files[0]" ngf-accept="'video/*'"></video>-->
+</div>
