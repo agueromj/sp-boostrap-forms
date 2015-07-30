@@ -1,0 +1,19 @@
+{
+  "name": "sp-boostrap-forms",
+  "version": "0.0.0",
+  "description": "A set of directives to work with Bootstrap forms and Angular js",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-angular-templatecache": "^1.7.0",
+    "karma-bower": "^1.0.0"
+  }
+}
