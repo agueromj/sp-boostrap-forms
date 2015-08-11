@@ -1,6 +1,6 @@
 (function(){
     var basePath = 'sp-boostrap-forms/';
-    var app = angular.module('sp.bootstrapForms', ['ui.bootstrap', 'ngMessages']);
+    var app = angular.module('sp.bootstrapForms', ['ui.bootstrap', 'ngMessages', 'spFormsTemplates']);
 
     //TODO: move this to a separate file to allow for production, and debug configurations
     app.config(['$compileProvider', function ($compileProvider) {

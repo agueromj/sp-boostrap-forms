@@ -13,10 +13,10 @@
                 placeholder: '@'
             },
             replace: true, //this will only work if the template returns one element
-            templateUrl: MODULE_ROOT_PATH + 'templates/text.html',
+            templateUrl: 'text.html',
             link: function(scope, el, attr, ctrls){
                 var formCtrl = ctrls[1];
-                scope.errMsgPath = MODULE_ROOT_PATH + 'templates/errorMessages.html';
+                scope.errMsgPath = 'errorMessages.html';
                 scope.ctrl = ctrls[0];
                 scope.formCtrl = formCtrl;
             }

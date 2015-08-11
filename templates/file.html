@@ -1,8 +1,10 @@
 <div class="form-group" ng-class="{'has-error': !ctrl.$valid && (formCtrl[name].$touched || formCtrl.$submitted)}">
     <label for="{{name}}">{{label}}</label>
     <div>
-        <img ngf-src="ngModel[0]" ngf-default-src="*/thumb.png" ngf-accept="'image/*'">
-        <div class="button btn btn-sm btn-default" ngf-select ng-model="ngModel">Upload</div>
+        <!--<img ngf-src="ngModel[0]" ngf-default-src="*/thumb.png" ngf-accept="'image/*'">-->
+        <!--<div class="button btn btn-sm btn-default" ngf-select ng-model="ngModel" translate>Upload</div>-->
+        <img ng-src="{{imgThumb}}" />
+        <div class="button" ngf-select ngf-change="upload($files)">Upload</div>
     </div>
     <!--<div class="button" ngf-select ngf-change="upload($files)">Upload on file change</div>-->
     <!--Drop File:-->

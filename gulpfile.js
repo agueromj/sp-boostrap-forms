@@ -1,3 +1,11 @@
-/**
- * Created by jusefbelkasemi on 15/07/15.
- */
+var gulp = require('gulp');
+var templateCache = require('gulp-angular-templatecache');
+
+gulp.task('default', function () {
+    return gulp.src('templates/**/*.html')
+        .pipe(templateCache({
+            module: 'spFormsTemplates',
+            standalone: true
+        }))
+        .pipe(gulp.dest('public'));
+});

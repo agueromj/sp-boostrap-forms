@@ -1,6 +1,6 @@
 <div class="form-group">
-    <label class="control-label col-sm-5" for="{{name}}" translate="">{{label}}</label>
-    <div class="col-sm-7">
+    <label class="control-label col-sm-5" for="{{name}}" translate="" ng-if="label != null">{{label}}</label>
+    <div ng-class="{'col-sm-7': (label != null), 'col-sm-12': (label == null)}">
         <p class="form-control-static" ng-transclude=""></p>
     </div>
 </div>

@@ -13,10 +13,10 @@
                 placeholder: '@'
             },
             replace: true, //this will only work if the template returns one element
-            templateUrl: spBootstrapForms.rootPath + 'templates/currency.html',
+            templateUrl: 'currency.html',
             link: function (scope, el, attr, ctrls) {
                 var formCtrl = ctrls[1];
-                scope.errMsgPath = spBootstrapForms.rootPath + 'templates/errorMessages.html';
+                scope.errMsgPath = 'errorMessages.html';
                 scope.ctrl = ctrls[0];
                 scope.formCtrl = formCtrl;
                 scope.currencySymbol = spBootstrapForms.currency;

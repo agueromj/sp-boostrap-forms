@@ -38,10 +38,10 @@
                 required: '='
             },
             replace: true, //this will only work if the template returns one element
-            templateUrl: MODULE_ROOT_PATH + 'templates/dateTime.html',
+            templateUrl: 'dateTime.html',
             link: function(scope, el, attr, ctrls){
                 var formCtrl = ctrls[1];
-                scope.errMsgPath = MODULE_ROOT_PATH + 'templates/errorMessages.html';
+                scope.errMsgPath = 'errorMessages.html';
                 scope.ctrl = ctrls[0];
                 scope.formCtrl = formCtrl;
 
@@ -52,8 +52,7 @@
                 scope.vm.datePicker = scope.datePicker;
                 scope.vm.format = scope.format;
                 scope.vm.required = attr.required;
-                //scope.vm.timeValue = scope.init ? initDate(scope.init) : moment().startOf('day').toDate();
-                //scope.vm.dateValue = initDate(scope.init);
+
                 scope.vm.timeValue = moment().startOf('day').toDate();
                 scope.vm.dateValue = null;
 
@@ -65,7 +64,7 @@
                 };
 
                 scope.$watch('ngModel', function(newVal, oldVal) {
-                    if(scope.hasDatepicker) {
+                    if(scope.showDatePicker) {
                         if (newVal != oldVal && updateDateVal) {
                             if (moment(newVal).isValid()) {
                                 scope.vm.timeValue = moment(newVal).toDate();
@@ -75,8 +74,14 @@
                             }
                         } else
                             updateDateVal = true;
+                    }else {
+                        if (moment(newVal).isValid()) {
+                            updateDateVal = false;
+                            scope.vm.dateValue = moment(newVal).format(scope.format);
+                        } else
+                            updateDateVal = true;
                     }
-                });
+                    });
 
                 scope.vm.timeChanged = function(){
                     var newDate = moment(scope.vm.dateValue);
@@ -97,7 +102,7 @@
 
                 scope.$watch('vm.dateValue', function(newVal, oldVal){
                     if (newVal != null) {
-                        if(scope.vm.hasDatepicker) {
+                        if(scope.showDatePicker) {
                             var hour = 0;
                             var min = 0;
 
@@ -107,17 +112,19 @@
                             }
 
                             //we need to get the date obj for intialisation to work
-                            var newValDate = moment(newVal).toDate();
-                            scope.ngModel = $filter('date')(new Date(
-                                newValDate.getFullYear(),
-                                newValDate.getMonth(),
-                                newValDate.getDate(),
-                                hour,
-                                min,
-                                0,
-                                0), 'yyyy-MM-dd HH:mm:ss');
+                            //var newValDate = moment(newVal).toDate();
+                            //scope.ngModel = moment(new Date(
+                            //    newValDate.getFullYear(),
+                            //    newValDate.getMonth(),
+                            //    newValDate.getDate(),
+                            //    hour,
+                            //    min,
+                            //    0,
+                            //    0), 'yyyy-MM-dd HH:mm:ss');
+                            var newValDate = moment(newVal);
+                            scope.ngModel =  newValDate.format('YYYY-MM-DD HH:mm:ss');
                         }else{
-                            scope.ngModel = newVal;//moment(newVal, scope.vm.format);
+                            scope.ngModel = moment(newVal, scope.vm.format).format('YYYY-MM-DD HH:mm:ss');
                         }
                     }else{
                         updateDateVal = true;

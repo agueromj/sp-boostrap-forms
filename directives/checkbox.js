@@ -12,7 +12,7 @@
                 name: '@'
             },
             replace: true, //this will only work if the template returns one element
-            templateUrl: MODULE_ROOT_PATH + 'templates/checkbox.html',
+            templateUrl: 'checkbox.html',
             link: function(scope, el, attr, ctrls){
                scope.isChecked = scope.ngModel == true;
             }

@@ -23,8 +23,10 @@
                 scope.ctrl = ctrls[0];
                 scope.formCtrl = formCtrl;
 
-                scope.$watch('ngModel', function () {
-                    scope.upload(scope.ngModel);
+                scope.$watch('ngModel', function (newVal) {
+                    //this means we already have an uploaded image
+                    if(newVal)
+                        scope.upload(newVal);
                 });
 
                 scope.upload = function (files) {
@@ -41,6 +43,7 @@
                                 var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
                                 console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
                             }).success(function (data, status, headers, config) {
+                                scope.imgThumb = data.photo_url_thumb;
                                 console.log('file ' + config.file.name + 'uploaded. Response: ' + data);
                             }).error(function (data, status, headers, config) {
                                 console.log('error status: ' + status);

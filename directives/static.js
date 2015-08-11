@@ -13,7 +13,7 @@
             },
             replace: true, //this will only work if the template returns one element
             transclude: true,
-            templateUrl: MODULE_ROOT_PATH + 'templates/static.html',
+            templateUrl: 'static.html',
             link: function(scope, el, attr){
             }
         }
