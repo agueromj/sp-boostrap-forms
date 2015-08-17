@@ -2,12 +2,12 @@
     <label for="{{name}}">{{label}}</label>
     <div ng-if="!showDatePicker">
         <input type="text" class="form-control" id="{{id}}" name="{{name}}" ng-placeholder="{{placeholder}}"
-               ng-model="vm.dateValue" ui-mask="{{mask}}" ng-required="{{::vm.required}}"/>
+               ng-model="vm.dateValue" ui-mask="{{mask}}" ng-required="{{::vm.required}}" ng-blur="onChangeDate()"/>
     </div>
     <div ng-if="showDatePicker">
             <div class="input-group">
             <input name="dateField" type="text" class="form-control date-picker" datepicker-popup="{{vm.format}}" ng-model="vm.dateValue"
-                   is-open="vm.opened" datepicker-options="vm.dateOptions" close-text="Close" />
+                   is-open="vm.opened" datepicker-options="vm.dateOptions" close-text="Close" ng-blur="onChangeDate()" />
             <span class="input-group-btn">
             <button type="button" class="btn btn-default" ng-click="vm.open($event)"><i
                     class="glyphicon glyphicon-calendar"></i></button>

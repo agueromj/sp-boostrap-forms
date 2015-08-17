@@ -64,6 +64,7 @@
                 };
 
                 scope.$watch('ngModel', function(newVal, oldVal) {
+
                     if(scope.showDatePicker) {
                         if (newVal != oldVal && updateDateVal) {
                             if (moment(newVal).isValid()) {
@@ -75,7 +76,7 @@
                         } else
                             updateDateVal = true;
                     }else {
-                        if (moment(newVal).isValid()) {
+                        if (newVal && moment(newVal).isValid()) {
                             updateDateVal = false;
                             scope.vm.dateValue = moment(newVal).format(scope.format);
                         } else
@@ -100,7 +101,32 @@
                     }
                 }
 
-                scope.$watch('vm.dateValue', function(newVal, oldVal){
+                //scope.$watch('vm.dateValue', function(newVal, oldVal){
+                //    if (newVal != null) {
+                //        if(scope.showDatePicker) {
+                //            var hour = 0;
+                //            var min = 0;
+                //
+                //            if (moment(scope.vm.timeValue).isValid()) {
+                //                hour = scope.vm.timeValue.getHours();
+                //                min = scope.vm.timeValue.getMinutes();
+                //            }
+                //
+                //            debugger
+                //            var newValDate = moment(newVal);
+                //            if(newValDate.isValid())
+                //                scope.ngModel =  newValDate.format('YYYY-MM-DD HH:mm:ss');
+                //        }else{
+                //            scope.ngModel = moment(newVal, scope.vm.format).format('YYYY-MM-DD HH:mm:ss');
+                //        }
+                //    }else{
+                //        updateDateVal = true;
+                //        scope.ngModel = null;
+                //    }
+                //});
+
+                scope.onChangeDate = function(){
+                    var newVal = scope.vm.dateValue;
                     if (newVal != null) {
                         if(scope.showDatePicker) {
                             var hour = 0;
@@ -111,18 +137,9 @@
                                 min = scope.vm.timeValue.getMinutes();
                             }
 
-                            //we need to get the date obj for intialisation to work
-                            //var newValDate = moment(newVal).toDate();
-                            //scope.ngModel = moment(new Date(
-                            //    newValDate.getFullYear(),
-                            //    newValDate.getMonth(),
-                            //    newValDate.getDate(),
-                            //    hour,
-                            //    min,
-                            //    0,
-                            //    0), 'yyyy-MM-dd HH:mm:ss');
                             var newValDate = moment(newVal);
-                            scope.ngModel =  newValDate.format('YYYY-MM-DD HH:mm:ss');
+                            if(newValDate.isValid())
+                                scope.ngModel =  newValDate.format('YYYY-MM-DD HH:mm:ss');
                         }else{
                             scope.ngModel = moment(newVal, scope.vm.format).format('YYYY-MM-DD HH:mm:ss');
                         }
@@ -130,8 +147,7 @@
                         updateDateVal = true;
                         scope.ngModel = null;
                     }
-                });
-
+                }
             }
         }
     }

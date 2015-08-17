@@ -1,6 +1,6 @@
 (function(){
     var basePath = 'sp-boostrap-forms/';
-    var app = angular.module('sp.bootstrapForms', ['ui.bootstrap', 'ngMessages', 'spFormsTemplates']);
+    var app = angular.module('sp.bootstrapForms', ['ui.bootstrap', 'ngMessages', 'spFormsTemplates', 'ngFileUpload']);
 
     //TODO: move this to a separate file to allow for production, and debug configurations
     app.config(['$compileProvider', function ($compileProvider) {
@@ -34,10 +34,10 @@
 
     //we can use this function to load template overrides for the ui.boostrap templates
     function Decorate($provide) {
-        $provide.decorator('timepickerDirective', function($delegate) {
+        $provide.decorator('timepickerDirective',['$delegate', function($delegate) {
             var directive = $delegate[0];
-            directive.templateUrl = basePath + 'templates/bootstrap_overrides/simple_timepicker.html';
+            directive.templateUrl = 'bootstrap_overrides/simple_timepicker.html';
             return $delegate;
-        });
+        }]);
     }
 }());
