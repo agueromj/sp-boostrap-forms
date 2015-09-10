@@ -101,9 +101,6 @@
                             if(angular.isDefined(attr.onchange)) {
                                 scope.onchange();
                             }
-                        } else {
-                            scope.vm.dateValue = null;
-                            updateDateVal = true;
                         }
                     }
                 });
