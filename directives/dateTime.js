@@ -8,7 +8,7 @@
     function  initDate(initType) {
         switch (initType) {
             case "now":
-                return new Date();//moment().toDate();
+                return moment().toDate();
                 break;
 
             case "startofyear":
