@@ -1,0 +1,75 @@
+.spDatepicker {
+  /*Date picker*/
+  .dropdown-menu {
+
+    //remove the outline from the datepicker table when it opens
+    table:focus {
+      outline: none;
+    }
+    //width: 250px;
+    //height: 250px;
+    border: 1px solid #ccc;
+    button {
+      outline: none;
+      border: 0px;
+    }
+    tbody {
+      height: 180px;
+
+      td {
+        padding: 1px;
+      }
+    }
+    thead th {
+      padding: 3px;
+    }
+    &.datepicker-mode-1, &.datepicker-mode-2 {
+      tbody button {
+        height: 40px;
+      }
+    }
+
+    li:focus {
+        outline: none;
+    }
+  }
+
+  .h6 {
+    font-size: 12px;
+    font-style: normal;
+  }
+  //
+  //.timepicker.dropdown-menu {
+  //  padding: 0 4px;
+  //  button {
+  //    outline: none;
+  //    border: 0px;
+  //  }
+  //  tbody button {
+  //    padding: 6px;
+  //  }
+  //}
+
+  .btn-default {
+    background-color: #fff;
+    color: #000;
+  }
+
+  .btn-default:hover {
+    background-color: #cccccc;
+  }
+
+  .btn-primary {
+    background-color: #000;
+    color: #fff;
+  }
+
+  /*icons*/
+  .icon-success {
+    color: green;
+  }
+
+  .icon-danger {
+    color: #ff0000;
+  }
+}
