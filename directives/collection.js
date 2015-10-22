@@ -13,7 +13,7 @@
                 placeholder: '@',
                 collection: '=',
                 includeBlank: '@',
-                onchange: '&',
+                onChange: '&',
                 blankTitle: '@',
                 titleField: '@'
             },
@@ -29,8 +29,9 @@
 
                 scope.$watch('ngModel', function(newVal, oldVal) {
 
-                    if (typeof(scope.onchange) == 'function')
-                        scope.onchange();
+                    if (typeof(scope.onChange) == 'function') {
+                        scope.onChange();
+                    }
                 });
             }
         }
