@@ -2,6 +2,8 @@
   /*Date picker*/
   .dropdown-menu {
 
+    padding-bottom: 5px;
+
     //remove the outline from the datepicker table when it opens
     table:focus {
       outline: none;
@@ -32,12 +34,13 @@
     li:focus {
         outline: none;
     }
+
+    .h6 {
+      font-size: 12px !important;
+      font-style: normal !important;
+    }
   }
 
-  .h6 {
-    font-size: 12px;
-    font-style: normal;
-  }
   //
   //.timepicker.dropdown-menu {
   //  padding: 0 4px;

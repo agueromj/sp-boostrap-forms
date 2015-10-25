@@ -36,7 +36,9 @@
                 datePicker: '@',
                 datePickerOptions: '=',
                 required: '=',
-                onChange: '&'
+                onChange: '&',
+                minMode: '@',
+                maxMode: '@'
             },
             replace: true, //this will only work if the template returns one element
             templateUrl: 'dateTime.html',
@@ -58,6 +60,8 @@
 
                 scope.vm.timeValue = moment().startOf('day').toDate();
                 scope.vm.dateValue = null;
+                scope.vm.minMode = !scope.minMode ? 'day' : scope.minMode;
+                scope.vm.maxMode = !scope.maxMode ? 'year' : scope.maxMode;
 
                 scope.vm.open = function($event) {
                     $event.preventDefault();
